@@ -1,6 +1,6 @@
-package com.oguzdogdu.recipes.dependencyinjection
+package com.oguzdogdu.recipes.data.dependencyinjection
 
-import com.oguzdogdu.recipes.remote.RecipeInterface
+import com.oguzdogdu.recipes.data.remote.RecipeInterface
 import com.oguzdogdu.recipes.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides

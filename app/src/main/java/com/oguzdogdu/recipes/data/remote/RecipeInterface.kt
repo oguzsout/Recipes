@@ -1,4 +1,4 @@
-package com.oguzdogdu.recipes.remote
+package com.oguzdogdu.recipes.data.remote
 
 import com.oguzdogdu.recipes.model.RecipeResponse
 import com.oguzdogdu.recipes.util.Constants.API_KEY
