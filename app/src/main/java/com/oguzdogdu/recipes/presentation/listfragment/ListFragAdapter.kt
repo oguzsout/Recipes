@@ -18,7 +18,7 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
                 imageView.load(recipe.image){
                     transformations(RoundedCornersTransformation(25f))
                 }
-                textView.text = recipe.sourceName
+                textView.text = recipe.title
             }
         }
     }
