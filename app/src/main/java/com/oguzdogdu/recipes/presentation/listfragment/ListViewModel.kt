@@ -19,8 +19,10 @@ class ListViewModel @Inject constructor(private val repo: RecipeRepoInterface) :
     val recipeResponse: LiveData<Resource<RecipeResponse>>
         get() = _response
 
-
-    fun getRecipies() {
+init {
+    getRecipies()
+}
+    private fun getRecipies() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = repo.allRecipes()
             _response.postValue(result)

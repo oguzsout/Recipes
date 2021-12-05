@@ -15,10 +15,10 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
 
         fun bind(recipe: Recipe) {
             binding.apply {
-                imageListItem.load(recipe.image){
+                imageView.load(recipe.image){
                     transformations(RoundedCornersTransformation(25f))
                 }
-                textViewListItem.text = recipe.sourceName
+                textView.text = recipe.sourceName
             }
         }
     }
