@@ -1,6 +1,8 @@
 package com.oguzdogdu.recipes.data.dependencyinjection
 
 import com.oguzdogdu.recipes.data.remote.RecipeInterface
+import com.oguzdogdu.recipes.data.repository.RecipeRepoImpl
+import com.oguzdogdu.recipes.domain.repository.RecipeRepoInterface
 import com.oguzdogdu.recipes.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -23,4 +25,9 @@ object AppModules {
             .create(RecipeInterface::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideRepository(apiService: RecipeInterface): RecipeRepoInterface {
+        return RecipeRepoImpl(apiService)
+    }
 }

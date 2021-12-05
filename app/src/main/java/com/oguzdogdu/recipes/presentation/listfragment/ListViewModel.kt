@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ListViewModel @Inject constructor(private val repo: RecipeRepoInterface) : ViewModel() {
 
     private val _response = MutableLiveData<Resource<RecipeResponse>>()
-    val newsResponse: LiveData<Resource<RecipeResponse>>
+    val recipeResponse: LiveData<Resource<RecipeResponse>>
         get() = _response
 
 
