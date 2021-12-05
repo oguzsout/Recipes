@@ -1,15 +1,14 @@
 package com.oguzdogdu.recipes.domain.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Recipe(
     val aggregateLikes: Int,
-    val analyzedInstructions: List<AnalyzedInstruction>,
     val cheap: Boolean,
     val creditsText: String,
-    val cuisines: List<Any>,
     val dairyFree: Boolean,
-    val diets: List<Any>,
-    val dishTypes: List<Any>,
-    val extendedIngredients: List<ExtendedIngredient>,
     val gaps: String,
     val glutenFree: Boolean,
     val healthScore: Double,
@@ -19,8 +18,6 @@ data class Recipe(
     val instructions: String,
     val license: String,
     val lowFodmap: Boolean,
-    val occasions: List<Any>,
-    val originalId: Any,
     val pricePerServing: Double,
     val readyInMinutes: Int,
     val servings: Int,
@@ -36,4 +33,4 @@ data class Recipe(
     val veryHealthy: Boolean,
     val veryPopular: Boolean,
     val weightWatcherSmartPoints: Int
-)
+) : Parcelable
