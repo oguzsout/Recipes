@@ -1,4 +1,4 @@
-package com.oguzdogdu.recipes.presentation.listfragment.adapter
+package com.oguzdogdu.recipes.presentation.listfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
