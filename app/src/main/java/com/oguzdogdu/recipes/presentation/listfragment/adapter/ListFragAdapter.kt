@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.oguzdogdu.recipes.databinding.ListRowBinding
-import com.oguzdogdu.recipes.model.Recipe
+import com.oguzdogdu.recipes.domain.model.Recipe
 
 class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
     inner class RecipeHolder(val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {

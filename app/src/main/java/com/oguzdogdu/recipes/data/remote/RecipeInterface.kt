@@ -1,6 +1,6 @@
 package com.oguzdogdu.recipes.data.remote
 
-import com.oguzdogdu.recipes.model.RecipeResponse
+import com.oguzdogdu.recipes.domain.model.RecipeResponse
 import com.oguzdogdu.recipes.util.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET

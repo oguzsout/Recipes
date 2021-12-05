@@ -1,4 +1,4 @@
-package com.oguzdogdu.recipes.model
+package com.oguzdogdu.recipes.domain.model
 
 data class Equipment(
     val id: Int,

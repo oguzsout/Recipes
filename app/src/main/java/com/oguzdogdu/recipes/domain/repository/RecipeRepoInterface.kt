@@ -1,6 +1,6 @@
-package com.oguzdogdu.recipes.repository
+package com.oguzdogdu.recipes.domain.repository
 
-import com.oguzdogdu.recipes.model.RecipeResponse
+import com.oguzdogdu.recipes.domain.model.RecipeResponse
 import com.oguzdogdu.recipes.util.Resource
 
 interface RecipeRepoInterface {
