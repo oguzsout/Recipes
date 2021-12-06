@@ -48,7 +48,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel.recipeResponse.observe(viewLifecycleOwner, { recipes ->
             when (recipes.status) {
                 Status.SUCCESS -> {
-
+                    binding.shimmer.stopShimmer()
                     recipes.data.let { recipeResponse ->
                         if (recipeResponse != null) {
                             mAdapter.recipes = recipeResponse.recipes
@@ -59,10 +59,11 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
                     recipes.message?.let { message ->
                         Log.e("TAG", "An error occured: $message")
+                        binding.shimmer.startShimmer()
                     }
                 }
                 Status.LOADING -> {
-
+                    binding.shimmer.startShimmer()
                 }
             }
         })
