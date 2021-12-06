@@ -11,16 +11,16 @@ import com.oguzdogdu.recipes.databinding.ListRowBinding
 import com.oguzdogdu.recipes.domain.model.Recipe
 
 class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
-    inner class RecipeHolder(val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class RecipeHolder(private val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe) {
             binding.apply {
-                imageView.load(recipe.image) {
+                imgRecipe.load(recipe.image) {
                     transformations(RoundedCornersTransformation(25f))
                 }
-                textView.text = recipe.title
-                "Vegan: ${recipe.vegan}".also { textViewVegan.text = it }
-                "Vegetarian: ${recipe.vegetarian}".also { textViewVegetarian.text = it }
+                tvRecipeTitle.text = recipe.title
+                "Vegan: ${recipe.vegan}".also { tvVegan.text = it }
+                "Vegetarian: ${recipe.vegetarian}".also { tvVegetarian.text = it }
                 "Health: ${recipe.veryHealthy}".also { textViewHealth.text = it }
             }
         }
