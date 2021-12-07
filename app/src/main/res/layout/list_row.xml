@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
-    android:background="#302C2C"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -15,7 +14,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#302C2C"
         android:padding="4dp">
 
         <ImageView
@@ -37,7 +35,6 @@
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
-            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +48,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/tv_vegetarian"
             app:layout_constraintStart_toEndOf="@+id/img_recipe"
             app:layout_constraintTop_toBottomOf="@+id/tv_recipeTitle" />
@@ -63,7 +59,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/textView_health"
             app:layout_constraintStart_toEndOf="@+id/img_recipe"
             app:layout_constraintTop_toBottomOf="@+id/tv_vegan" />
@@ -75,7 +70,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_recipe"
             app:layout_constraintTop_toBottomOf="@+id/tv_vegetarian" />

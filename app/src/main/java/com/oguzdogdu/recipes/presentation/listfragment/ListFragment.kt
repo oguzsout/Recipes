@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzdogdu.recipes.R
 import com.oguzdogdu.recipes.databinding.FragmentListBinding
@@ -34,6 +35,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         super.onViewCreated(view, savedInstanceState)
         setupRv()
         observeData()
+        sendData()
     }
 
     private fun setupRv() {
@@ -69,6 +71,15 @@ class ListFragment : Fragment(R.layout.fragment_list) {
                 }
             }
         })
+    }
+
+    private fun sendData() {
+        mAdapter.setOnItemClickListener {
+
+            findNavController().navigate(
+                R.id.action_listFragment_to_detailFragment
+            )
+        }
     }
 
     override fun onDestroyView() {

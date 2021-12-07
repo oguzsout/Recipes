@@ -12,7 +12,7 @@ import com.oguzdogdu.recipes.domain.model.Recipe
 import com.oguzdogdu.recipes.util.setOf
 
 class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
-    inner class RecipeHolder(private val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class RecipeHolder(val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe) {
             binding.apply {
@@ -54,10 +54,18 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
         )
     }
 
+    private var onItemClickListener: ((Recipe) -> Unit)? = null
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
         val currentItem = recipes[position]
         holder.bind(currentItem)
+        holder.binding.root.setOnClickListener {
+            onItemClickListener?.let {
+                it(currentItem)
+            }
+        }
     }
-
+    fun setOnItemClickListener(listener: (Recipe) -> Unit) {
+        onItemClickListener = listener
+    }
     override fun getItemCount() = recipes.size
 }
