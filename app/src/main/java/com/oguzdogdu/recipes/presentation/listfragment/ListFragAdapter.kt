@@ -9,6 +9,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.oguzdogdu.recipes.databinding.ListRowBinding
 import com.oguzdogdu.recipes.domain.model.Recipe
+import com.oguzdogdu.recipes.util.setOf
 
 class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
     inner class RecipeHolder(private val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -19,12 +20,13 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
                     transformations(RoundedCornersTransformation(25f))
                 }
                 tvRecipeTitle.text = recipe.title
-                "Vegan: ${recipe.vegan}".also { tvVegan.text = it }
-                "Vegetarian: ${recipe.vegetarian}".also { tvVegetarian.text = it }
-                "Health: ${recipe.veryHealthy}".also { textViewHealth.text = it }
+                "Vegan: ${recipe.vegan.setOf()}".also { tvVegan.text = it }
+                "Vegetarian: ${recipe.vegetarian.setOf()}".also { tvVegetarian.text = it }
+                "Health: ${recipe.veryHealthy.setOf()}".also { textViewHealth.text = it }
             }
         }
     }
+
 
     private val diffUtil = object : DiffUtil.ItemCallback<Recipe>() {
         override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {

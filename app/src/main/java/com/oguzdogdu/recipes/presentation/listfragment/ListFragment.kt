@@ -48,10 +48,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         viewModel.recipeResponse.observe(viewLifecycleOwner, { recipes ->
             when (recipes.status) {
                 Status.SUCCESS -> {
-                    binding.shimmer.stopShimmer()
+
                     recipes.data.let { recipeResponse ->
                         if (recipeResponse != null) {
                             mAdapter.recipes = recipeResponse.recipes
+                            binding.shimmer.stopShimmer()
+                            binding.shimmer.visibility = View.GONE
                         }
                     }
                 }
