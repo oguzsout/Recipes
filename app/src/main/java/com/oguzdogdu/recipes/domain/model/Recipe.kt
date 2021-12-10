@@ -3,7 +3,7 @@ package com.oguzdogdu.recipes.domain.model
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+@kotlinx.parcelize.Parcelize
 data class Recipe(
     val aggregateLikes: Int,
     val cheap: Boolean,

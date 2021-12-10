@@ -60,9 +60,12 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
     private fun sendData() {
         mAdapter.setOnItemClickListener {
-
+            val bundle = Bundle().apply {
+                putParcelable("recipeArgs", it)
+            }
             findNavController().navigate(
-                R.id.action_listFragment_to_detailFragment
+                R.id.action_listFragment_to_detailFragment,
+                bundle
             )
         }
     }
