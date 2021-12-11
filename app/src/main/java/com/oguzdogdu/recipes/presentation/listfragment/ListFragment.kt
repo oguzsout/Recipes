@@ -44,7 +44,6 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
                     }
                 }
                 Status.ERROR -> {
-
                     recipes.message?.let { message ->
                         Log.e("TAG", "An error occured: $message")
                         binding.shimmer.startShimmer()

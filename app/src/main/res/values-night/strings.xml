@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tv_title">Title</string>
+    <string name="tv_summary">Summary</string>
+    <string name="tv_url">Url</string>
+</resources>

@@ -11,7 +11,8 @@ import com.oguzdogdu.recipes.databinding.ListRowBinding
 import com.oguzdogdu.recipes.domain.model.Recipe
 import com.oguzdogdu.recipes.util.setOf
 
-class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
+class ListFragAdapter :
+    RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
     inner class RecipeHolder(val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe) {
@@ -26,8 +27,6 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
             }
         }
     }
-
-
     private val diffUtil = object : DiffUtil.ItemCallback<Recipe>() {
         override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
             return oldItem == newItem
@@ -37,7 +36,6 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
             return oldItem == newItem
         }
     }
-
     private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
 
     var recipes: List<Recipe>
@@ -54,7 +52,6 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
         )
     }
 
-    private var onItemClickListener: ((Recipe) -> Unit)? = null
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
         val currentItem = recipes[position]
         holder.bind(currentItem)
@@ -64,6 +61,7 @@ class ListFragAdapter : RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
             }
         }
     }
+    private var onItemClickListener: ((Recipe) -> Unit)? = null
     fun setOnItemClickListener(listener: (Recipe) -> Unit) {
         onItemClickListener = listener
     }

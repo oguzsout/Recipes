@@ -7,4 +7,7 @@
     <string name="healty">Healty</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="vegan">Vegan</string>
+    <string name="tv_title">Title</string>
+    <string name="tv_summary">Summary</string>
+    <string name="tv_url">Url</string>
 </resources>
