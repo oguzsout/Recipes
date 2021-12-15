@@ -21,14 +21,20 @@ class ListViewModel @Inject constructor(private val repo: RecipeRepoInterface) :
         get() = _response
 
     init {
-        getRecipies()
+        getRecipes()
     }
-     private fun getRecipies() {
+
+    private fun getRecipes() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = repo.allRecipes()
             delay(1000)
             _response.postValue(result)
-
         }
     }
 }
+
+
+
+
+
+
