@@ -2,8 +2,8 @@ package com.oguzdogdu.recipes.presentation.listfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -12,7 +12,7 @@ import com.oguzdogdu.recipes.domain.model.Recipe
 import com.oguzdogdu.recipes.util.setOf
 
 class ListFragAdapter :
-    RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
+    ListAdapter<Recipe, ListFragAdapter.RecipeHolder>(RecipeComparator()) {
     inner class RecipeHolder(val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe) {
@@ -27,21 +27,6 @@ class ListFragAdapter :
             }
         }
     }
-    private val diffUtil = object : DiffUtil.ItemCallback<Recipe>() {
-        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
-            return oldItem == newItem
-        }
-    }
-    private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
-
-    var recipes: List<Recipe>
-        get() = recyclerListDiffer.currentList
-        set(value) = recyclerListDiffer.submitList(value)
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeHolder {
         return RecipeHolder(
             ListRowBinding.inflate(
@@ -51,9 +36,8 @@ class ListFragAdapter :
             )
         )
     }
-
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
-        val currentItem = recipes[position]
+        val currentItem = getItem(position)
         holder.bind(currentItem)
         holder.binding.root.setOnClickListener {
             onItemClickListener?.let {
@@ -61,9 +45,17 @@ class ListFragAdapter :
             }
         }
     }
+
     private var onItemClickListener: ((Recipe) -> Unit)? = null
     fun setOnItemClickListener(listener: (Recipe) -> Unit) {
         onItemClickListener = listener
     }
-    override fun getItemCount() = recipes.size
+
+    class RecipeComparator : DiffUtil.ItemCallback<Recipe>() {
+        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe) =
+            oldItem.id == newItem.id
+
+        override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe) =
+            oldItem == newItem
+    }
 }

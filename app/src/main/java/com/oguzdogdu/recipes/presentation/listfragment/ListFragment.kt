@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzdogdu.recipes.R
 import com.oguzdogdu.recipes.databinding.FragmentListBinding
 import com.oguzdogdu.recipes.presentation.base.BaseFragment
+import com.oguzdogdu.recipes.util.Resource
 import com.oguzdogdu.recipes.util.Status
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +38,7 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
                 Status.SUCCESS -> {
                     recipes.data.let { recipeResponse ->
                         if (recipeResponse != null) {
-                            mAdapter.recipes = recipeResponse.recipes
+                            mAdapter.submitList(recipeResponse.recipes)
                             binding.shimmer.stopShimmer()
                             binding.shimmer.visibility = View.GONE
                         }
