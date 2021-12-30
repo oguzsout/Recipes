@@ -10,8 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Recipes"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/Theme.Recipes">
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
