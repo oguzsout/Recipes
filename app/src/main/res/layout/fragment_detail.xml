@@ -46,11 +46,40 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tv_instruction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="10"
+                android:padding="8dp"
+                android:text="@string/instruction"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_credit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="10"
+                android:padding="8dp"
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:text="@string/credit"
+                android:textColor="@color/black"
+                android:textSize="14sp">
+
+            </TextView>
+
+            <TextView
                 android:id="@+id/tv_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/tv_url"
+                android:autoLink="web"
                 android:linksClickable="true"
                 android:textColor="@color/black"
                 android:textSize="12sp" />

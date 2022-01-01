@@ -10,4 +10,6 @@
     <string name="tv_title">Title</string>
     <string name="tv_summary">Summary</string>
     <string name="tv_url">Url</string>
+    <string name="instruction">Instruction</string>
+    <string name="credit">Credit</string>
 </resources>

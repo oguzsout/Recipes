@@ -40,9 +40,9 @@ class ListFragAdapter :
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
         val recipeItem = getItem(position)
         holder.bind(recipeItem)
-        holder.binding.root.setOnClickListener {
+        holder.binding.root.setOnClickListener { recipeView ->
             val action = ListFragmentDirections.actionListFragmentToDetailFragment(recipeItem)
-            findNavController(it).navigate(action)
+            findNavController(recipeView).navigate(action)
         }
     }
     class RecipeComparator : DiffUtil.ItemCallback<Recipe>() {

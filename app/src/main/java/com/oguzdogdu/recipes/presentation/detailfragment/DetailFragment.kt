@@ -27,6 +27,8 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
         val recipeList = args.recipeArgs
         binding.tvTitle.text = recipeList?.title
         binding.tvSummary.text = recipeList?.summary?.parseAsHtml()
+        binding.tvCredit.text = recipeList?.creditsText
+        binding.tvInstruction.text = recipeList?.instructions?.parseAsHtml()
         binding.tvUrl.text = recipeList?.spoonacularSourceUrl
         binding.imageListItem.load(recipeList?.image) {
             crossfade(true)
