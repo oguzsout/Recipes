@@ -2,6 +2,7 @@ package com.oguzdogdu.recipes.presentation.listfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -37,20 +38,13 @@ class ListFragAdapter :
         )
     }
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
-        val currentItem = getItem(position)
-        holder.bind(currentItem)
+        val recipeItem = getItem(position)
+        holder.bind(recipeItem)
         holder.binding.root.setOnClickListener {
-            onItemClickListener?.let {
-                it(currentItem)
-            }
+            val action = ListFragmentDirections.actionListFragmentToDetailFragment(recipeItem)
+            findNavController(it).navigate(action)
         }
     }
-
-    private var onItemClickListener: ((Recipe) -> Unit)? = null
-    fun setOnItemClickListener(listener: (Recipe) -> Unit) {
-        onItemClickListener = listener
-    }
-
     class RecipeComparator : DiffUtil.ItemCallback<Recipe>() {
         override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe) =
             oldItem.id == newItem.id

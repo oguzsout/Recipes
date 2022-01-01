@@ -27,13 +27,14 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
         val recipeList = args.recipeArgs
         binding.tvTitle.text = recipeList?.title
         binding.tvSummary.text = recipeList?.summary?.parseAsHtml()
-        binding.tvUrl.text = recipeList?.spoonacularSourceUrl?.parseAsHtml()
+        binding.tvUrl.text = recipeList?.spoonacularSourceUrl
         binding.imageListItem.load(recipeList?.image) {
             crossfade(true)
             crossfade(500)
             transformations(RoundedCornersTransformation(25f))
         }
     }
+
     private fun backStack() {
         val callBack = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {

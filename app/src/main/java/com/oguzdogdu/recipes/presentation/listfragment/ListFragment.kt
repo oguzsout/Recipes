@@ -23,7 +23,6 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
         super.onViewCreated(view, savedInstanceState)
         setupRv()
         observeData()
-        sendData()
     }
     private fun setupRv() {
         binding.rvMain.apply {
@@ -55,16 +54,5 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
                 }
             }
         })
-    }
-    private fun sendData() {
-        mAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putParcelable("recipeArgs", it)
-            }
-            findNavController().navigate(
-                R.id.action_listFragment_to_detailFragment,
-                bundle
-            )
-        }
     }
 }

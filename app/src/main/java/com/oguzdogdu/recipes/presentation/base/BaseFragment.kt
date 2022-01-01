@@ -25,5 +25,4 @@ abstract class BaseFragment<VB : ViewBinding>(
             throw IllegalArgumentException("Binding cannot be null")
         return binding.root
     }
-
 }
