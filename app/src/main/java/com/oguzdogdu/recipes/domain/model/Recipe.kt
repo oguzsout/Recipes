@@ -1,7 +1,6 @@
 package com.oguzdogdu.recipes.domain.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 
 @kotlinx.parcelize.Parcelize
 data class Recipe(

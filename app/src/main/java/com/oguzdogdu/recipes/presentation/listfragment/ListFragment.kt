@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.oguzdogdu.recipes.R
 import com.oguzdogdu.recipes.databinding.FragmentListBinding
 import com.oguzdogdu.recipes.presentation.base.BaseFragment
-import com.oguzdogdu.recipes.util.Resource
 import com.oguzdogdu.recipes.util.Status
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,34 +14,37 @@ import dagger.hilt.android.AndroidEntryPoint
 class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::inflate) {
 
     private val viewModel: ListViewModel by viewModels()
-    private val mAdapter = ListFragAdapter()
+
+    private var listAdapter = ListFragAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRv()
         observeData()
     }
+
     private fun setupRv() {
         binding.rvMain.apply {
-            adapter = mAdapter
+            adapter = listAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
         }
     }
+
     private fun observeData() {
-        viewModel.recipeResponse.observe(viewLifecycleOwner, { recipes ->
-            when (recipes.status) {
+        viewModel.recipeResponse.observe(viewLifecycleOwner, {
+            when (it.status) {
                 Status.SUCCESS -> {
-                    recipes.data.let { recipeResponse ->
+                    it.data.let { recipeResponse ->
                         if (recipeResponse != null) {
-                            mAdapter.submitList(recipeResponse.recipes)
+                            listAdapter.recipies = recipeResponse.recipes
                             binding.shimmer.stopShimmer()
                             binding.shimmer.visibility = View.GONE
                         }
                     }
                 }
                 Status.ERROR -> {
-                    recipes.message?.let { message ->
+                    it.message?.let { message ->
                         Log.e("TAG", "An error occured: $message")
                         binding.shimmer.startShimmer()
                     }

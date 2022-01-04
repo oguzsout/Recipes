@@ -2,9 +2,9 @@ package com.oguzdogdu.recipes.presentation.listfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -13,8 +13,9 @@ import com.oguzdogdu.recipes.domain.model.Recipe
 import com.oguzdogdu.recipes.util.setOf
 
 class ListFragAdapter :
-    ListAdapter<Recipe, ListFragAdapter.RecipeHolder>(RecipeComparator()) {
-    inner class RecipeHolder(val binding: ListRowBinding) : RecyclerView.ViewHolder(binding.root) {
+    RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
+    inner class RecipeHolder(private val binding: ListRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe) {
             binding.apply {
@@ -26,8 +27,16 @@ class ListFragAdapter :
                 "Vegetarian: ${recipe.vegetarian.setOf()}".also { tvVegetarian.text = it }
                 "Health: ${recipe.veryHealthy.setOf()}".also { textViewHealth.text = it }
             }
+            binding.root.setOnClickListener {
+                recipe.let {
+                    val directions =
+                        ListFragmentDirections.actionListFragmentToDetailFragment(recipe)
+                    binding.root.findNavController().navigate(directions)
+                }
+            }
         }
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeHolder {
         return RecipeHolder(
             ListRowBinding.inflate(
@@ -37,19 +46,26 @@ class ListFragAdapter :
             )
         )
     }
+
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
-        val recipeItem = getItem(position)
+        val recipeItem = recipies[position]
         holder.bind(recipeItem)
-        holder.binding.root.setOnClickListener { recipeView ->
-            val action = ListFragmentDirections.actionListFragmentToDetailFragment(recipeItem)
-            findNavController(recipeView).navigate(action)
+    }
+
+    private val diffUtil = object : DiffUtil.ItemCallback<Recipe>() {
+        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
+            return oldItem == newItem
         }
     }
-    class RecipeComparator : DiffUtil.ItemCallback<Recipe>() {
-        override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe) =
-            oldItem.id == newItem.id
+    private val recyclerListDiffer = AsyncListDiffer(this, diffUtil)
 
-        override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe) =
-            oldItem == newItem
-    }
+    var recipies: List<Recipe>
+        get() = recyclerListDiffer.currentList
+        set(value) = recyclerListDiffer.submitList(value)
+
+    override fun getItemCount() = recipies.size
 }
