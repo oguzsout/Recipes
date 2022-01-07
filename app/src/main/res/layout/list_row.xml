@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -13,7 +12,6 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/list_layout_row"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="4dp">
@@ -61,12 +59,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView_health"
+            app:layout_constraintBottom_toTopOf="@+id/tv_health"
             app:layout_constraintStart_toEndOf="@+id/img_recipe"
             app:layout_constraintTop_toBottomOf="@+id/tv_vegan" />
 
         <TextView
-            android:id="@+id/textView_health"
+            android:id="@+id/tv_health"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

@@ -9,7 +9,6 @@ import com.oguzdogdu.recipes.domain.repository.RecipeRepoInterface
 import com.oguzdogdu.recipes.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

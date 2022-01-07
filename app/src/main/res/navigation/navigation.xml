@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation"
     app:startDestination="@id/listFragment">
 
     <fragment
@@ -37,6 +36,10 @@
             app:argType="com.oguzdogdu.recipes.domain.model.Recipe"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_detailFragment_pop"
+            app:popUpTo="@id/listFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 </navigation>

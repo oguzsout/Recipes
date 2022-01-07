@@ -1,4 +1,4 @@
-package com.oguzdogdu.recipes.presentation.base
+package com.oguzdogdu.recipes.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

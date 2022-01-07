@@ -2,7 +2,6 @@ package com.oguzdogdu.recipes.presentation.listfragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -25,16 +24,20 @@ class ListFragAdapter :
                 tvRecipeTitle.text = recipe.title
                 "Vegan: ${recipe.vegan.setOf()}".also { tvVegan.text = it }
                 "Vegetarian: ${recipe.vegetarian.setOf()}".also { tvVegetarian.text = it }
-                "Health: ${recipe.veryHealthy.setOf()}".also { textViewHealth.text = it }
+                "Health: ${recipe.veryHealthy.setOf()}".also { tvHealth.text = it }
             }
             binding.root.setOnClickListener {
-                recipe.let {
-                    val directions =
-                        ListFragmentDirections.actionListFragmentToDetailFragment(recipe)
-                    binding.root.findNavController().navigate(directions)
+                onItemClickListener?.let {
+                    it(recipe)
                 }
             }
         }
+    }
+
+    private var onItemClickListener: ((Recipe) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Recipe) -> Unit) {
+        onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeHolder {
