@@ -1,6 +1,6 @@
 package com.oguzdogdu.recipes.util
 
- fun Boolean.setOf(): String {
+ fun Boolean.convertToExpression(): String {
     return if(equals(true)) {
         "Yes"
     } else {

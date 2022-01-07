@@ -20,13 +20,13 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRv()
+        setupRecyclerView()
         transferringDataToDetailScreen()
         observeData()
     }
 
-    private fun setupRv() {
-        binding.rvMain.apply {
+    private fun setupRecyclerView() {
+        binding.rvListfrag.apply {
             adapter = listAdapter
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
@@ -68,12 +68,12 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
     private fun showShimmerEffect() {
         binding.shimmer.startShimmer()
         binding.shimmer.visibility = View.VISIBLE
-        binding.rvMain.visibility = View.GONE
+        binding.rvListfrag.visibility = View.GONE
     }
 
     private fun hideShimmerEffect() {
         binding.shimmer.stopShimmer()
         binding.shimmer.visibility = View.GONE
-        binding.rvMain.visibility = View.VISIBLE
+        binding.rvListfrag.visibility = View.VISIBLE
     }
 }

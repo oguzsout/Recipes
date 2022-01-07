@@ -38,7 +38,7 @@
             android:defaultValue="@null" />
         <action
             android:id="@+id/action_detailFragment_pop"
-            app:popUpTo="@id/listFragment"
+            app:popUpTo="@id/detailFragment"
             app:popUpToInclusive="true" />
 
     </fragment>

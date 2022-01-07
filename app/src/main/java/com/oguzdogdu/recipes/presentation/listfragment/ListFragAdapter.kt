@@ -9,7 +9,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.oguzdogdu.recipes.databinding.ListRowBinding
 import com.oguzdogdu.recipes.domain.model.Recipe
-import com.oguzdogdu.recipes.util.setOf
+import com.oguzdogdu.recipes.util.convertToExpression
 
 class ListFragAdapter :
     RecyclerView.Adapter<ListFragAdapter.RecipeHolder>() {
@@ -22,9 +22,11 @@ class ListFragAdapter :
                     transformations(RoundedCornersTransformation(25f))
                 }
                 tvRecipeTitle.text = recipe.title
-                "Vegan: ${recipe.vegan.setOf()}".also { tvVegan.text = it }
-                "Vegetarian: ${recipe.vegetarian.setOf()}".also { tvVegetarian.text = it }
-                "Health: ${recipe.veryHealthy.setOf()}".also { tvHealth.text = it }
+                "Vegan: ${recipe.vegan.convertToExpression()}".also { tvVegan.text = it }
+                "Vegetarian: ${recipe.vegetarian.convertToExpression()}".also {
+                    tvVegetarian.text = it
+                }
+                "Health: ${recipe.veryHealthy.convertToExpression()}".also { tvHealth.text = it }
             }
             binding.root.setOnClickListener {
                 onItemClickListener?.let {
