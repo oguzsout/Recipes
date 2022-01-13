@@ -1,7 +1,10 @@
-package com.oguzdogdu.recipes.data.remote.dto
+package com.oguzdogdu.recipes.data.model
 
+import android.os.Parcelable
 import com.oguzdogdu.recipes.domain.model.Recipe
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class RecipeDetailDto(
     val aggregateLikes: Int,
     val cheap: Boolean,
@@ -31,17 +34,18 @@ data class RecipeDetailDto(
     val veryHealthy: Boolean,
     val veryPopular: Boolean,
     val weightWatcherSmartPoints: Int
-)
+) : Parcelable
 
 fun RecipeDetailDto.toRecipe(): Recipe {
     return Recipe(
-        image,
+        creditsText,
         id,
         image,
         instructions,
         sourceUrl,
         summary,
         title,
+        spoonacularSourceUrl,
         vegan,
         vegetarian,
         veryHealthy

@@ -11,6 +11,7 @@ data class Recipe(
     val sourceUrl: String,
     val summary: String,
     val title: String,
+    val spoonacularSourceUrl: String,
     val vegan: Boolean,
     val vegetarian: Boolean,
     val veryHealthy: Boolean,
