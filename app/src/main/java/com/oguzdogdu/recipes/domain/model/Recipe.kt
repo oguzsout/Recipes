@@ -1,8 +1,9 @@
 package com.oguzdogdu.recipes.domain.model
 
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-@kotlinx.parcelize.Parcelize
+@Parcelize
 data class Recipe(
     val creditsText: String,
     val id: Int,

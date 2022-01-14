@@ -5,7 +5,6 @@ import com.oguzdogdu.recipes.data.remote.RecipeInterface
 import com.oguzdogdu.recipes.domain.repository.RecipeRepoInterface
 import com.oguzdogdu.recipes.util.Constants.API_KEY
 import com.oguzdogdu.recipes.util.Constants.PAGE_NUM
-import com.oguzdogdu.recipes.util.Resource
 import javax.inject.Inject
 
 class RecipeRepoImpl @Inject constructor(private val apiService: RecipeInterface) :
