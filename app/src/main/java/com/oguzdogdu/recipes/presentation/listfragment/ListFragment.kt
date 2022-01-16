@@ -1,15 +1,16 @@
 package com.oguzdogdu.recipes.presentation.listfragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oguzdogdu.recipes.base.BaseFragment
 import com.oguzdogdu.recipes.databinding.FragmentListBinding
-import com.oguzdogdu.recipes.util.Status
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::inflate) {
@@ -41,28 +42,26 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::infl
     }
 
     private fun observeData() {
-        viewModel.recipeResponse.observe(viewLifecycleOwner, {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    hideShimmerEffect()
-                    it.data.let { recipeResponse ->
-                        if (recipeResponse != null) {
-                            listAdapter.recipies = recipeResponse.recipes
-                        }
-                    }
-                }
-                Status.ERROR -> {
-                    hideShimmerEffect()
-                    it.message?.let { message ->
-                        Log.e("TAG", "An error occured: $message")
-
-                    }
-                }
-                Status.LOADING -> {
+        lifecycle.coroutineScope.launchWhenCreated {
+            viewModel.recipeList.collect { recipeList ->
+                if (recipeList.isLoading) {
                     showShimmerEffect()
                 }
+                if (recipeList.error.isNotBlank()) {
+                    hideShimmerEffect()
+                    Toast.makeText(requireContext(), recipeList.error, Toast.LENGTH_SHORT).show()
+                }
+
+                recipeList.data?.let {
+
+                    if (it.isEmpty()) {
+                        showShimmerEffect()
+                    }
+                    hideShimmerEffect()
+                    listAdapter.recipies = it
+                }
             }
-        })
+        }
     }
 
     private fun showShimmerEffect() {
