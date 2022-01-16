@@ -1,8 +1,8 @@
 package com.oguzdogdu.recipes.presentation.detailfragment
 
 import android.os.Bundle
+import android.text.Html
 import android.view.View
-import androidx.core.text.parseAsHtml
 import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -22,12 +22,12 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
     private fun setData() {
         val recipeList = args.recipeArgs
-        binding.tvTitle.text = recipeList?.title
-        binding.tvSummary.text = recipeList?.summary?.parseAsHtml()
-        binding.tvCredit.text = recipeList?.creditsText
-        binding.tvInstruction.text = recipeList?.instructions?.parseAsHtml()
-        binding.tvUrl.text = recipeList?.spoonacularSourceUrl
-        binding.imageListItem.load(recipeList?.image){
+        binding.tvTitle.text = recipeList.title
+        binding.tvSummary.text = Html.fromHtml(recipeList.summary)
+        binding.tvCredit.text = recipeList.creditsText
+        binding.tvInstruction.text = Html.fromHtml(recipeList.instructions)
+        binding.tvUrl.text = recipeList.spoonacularSourceUrl
+        binding.imageListItem.load(recipeList.image) {
             transformations(RoundedCornersTransformation(25f))
         }
     }
