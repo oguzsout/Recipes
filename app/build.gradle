@@ -48,11 +48,11 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.12.1'
     testImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.12.1'
     androidTestImplementation "androidx.navigation:navigation-testing:2.3.5"
@@ -101,4 +101,9 @@ dependencies {
 
     //shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    implementation "androidx.recyclerview:recyclerview:1.3.0-alpha01"
+
+    //fresco
+    implementation 'com.facebook.fresco:fresco:2.5.0'
 }
