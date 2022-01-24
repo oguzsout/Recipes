@@ -11,9 +11,9 @@ Architecture principles follow Google recommended [Guide to app architecture](ht
 ![Clean Architecture](https://user-images.githubusercontent.com/73955284/150781105-35e8a16f-47a7-4579-97fb-2258ad8dae68.jpeg)
 
 # Layers
-- [Data]
-- [Domain]
-- [Presentation]
+- Data
+- Domain
+- Presentation
 
 ### S.O.L.I.D Principles
 
@@ -46,4 +46,16 @@ This project uses many of the popular libraries, plugins and tools of the androi
 - [Flow](https://developer.android.com/kotlin/flow) - Flows are built on top of coroutines and can provide multiple values. A flow is conceptually a stream of data that can be computed asynchronously.
 - [Material Design](https://material.io/develop/android/docs/getting-started/) - Build awesome beautiful UIs.
 - [Coil](https://github.com/coil-kt/coil) - Image loading for Android backed by Kotlin Coroutines.
+
+## Screenshots
+
+<p align="center">
+<img alt="Recipes Main Page" height="450px" src="https://user-images.githubusercontent.com/73955284/150795735-16b7e0c2-345e-4aff-8f41-44c6136eea21.png"  />
+
+<img alt="Recipes Main Page" height="450px" src="https://user-images.githubusercontent.com/73955284/150795804-38be9fbe-f296-40d0-a107-bc02b9672aa7.png"  />
+
+<img alt="Recipes Main Page" height="450px" src="https://user-images.githubusercontent.com/73955284/150795858-80091da2-e4c8-4183-9094-d3ba0352db69.png"   />
+
+<img alt="Recipes Main Page" height="450px" src="https://user-images.githubusercontent.com/73955284/150795899-ed5e6a09-fa1c-4ac7-b0b9-3510a8df192a.png"   />
+</p>
 
