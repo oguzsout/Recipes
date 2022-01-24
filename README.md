@@ -11,9 +11,9 @@ Architecture principles follow Google recommended [Guide to app architecture](ht
 ![Clean Architecture](https://user-images.githubusercontent.com/73955284/150781105-35e8a16f-47a7-4579-97fb-2258ad8dae68.jpeg)
 
 # Layers
--Data
--Domain
--Presentation
+- [Data]
+- [Domain]
+- [Presentation]
 
 ### S.O.L.I.D Principles
 
