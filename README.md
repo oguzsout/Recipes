@@ -47,6 +47,10 @@ This project uses many of the popular libraries, plugins and tools of the androi
 - [Material Design](https://material.io/develop/android/docs/getting-started/) - Build awesome beautiful UIs.
 - [Coil](https://github.com/coil-kt/coil) - Image loading for Android backed by Kotlin Coroutines.
 
+## MAD Score
+![summary](https://user-images.githubusercontent.com/73955284/151040121-20f1cd2e-c256-4156-bc87-a6ea8df174b1.png)
+![kotlin](https://user-images.githubusercontent.com/73955284/151040247-f3c0720e-7aa0-4bd1-82e4-69fa316abba0.png)
+
 ## Screenshots
 
 <p align="center">
